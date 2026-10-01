@@ -8,7 +8,7 @@ public class MyCharacterController : MonoBehaviour
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] Vector2 lookSensitivity = new Vector2(1, 1);
     [SerializeField] LayerMask groundMask;
-    [SerializeField] float groundingOffset = 1.0f;
+    //[SerializeField] float groundingOffset = 1.0f;
     [SerializeField] float jumpForce = 100f;
 
     Vector2 moveInput;
@@ -34,7 +34,7 @@ public class MyCharacterController : MonoBehaviour
         pos += transform.forward * moveInput.y * moveSpeed * Time.fixedDeltaTime;
         pos += transform.right * moveInput.x * moveSpeed * Time.fixedDeltaTime;
 
-        if (grounded)
+        /*if (grounded)
         {
             rb.linearVelocity = Vector3.zero;
 
@@ -45,7 +45,7 @@ public class MyCharacterController : MonoBehaviour
                 pos.y += groundingOffset;
                 pos.y = hit.point.y + groundingOffset;
             }
-        }
+        }*/
 
         grounded = Physics.Raycast(transform.position, Vector3.down, 1.1f, groundMask);
 
