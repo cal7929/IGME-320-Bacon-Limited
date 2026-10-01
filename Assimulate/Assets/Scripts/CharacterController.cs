@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class MyCharacterController : MonoBehaviour
 {
+    [SerializeField] bool isActive;
     [SerializeField] float lookSpeed = 100f;
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] Vector2 lookSensitivity = new Vector2(1, 1);
@@ -27,6 +28,10 @@ public class MyCharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(isActive == false)
+        {
+            return;
+        }
         rb.angularVelocity = Vector3.zero;
 
         Vector3 pos = transform.position;
@@ -55,11 +60,19 @@ public class MyCharacterController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext ctx)
     {
+        if (isActive == false)
+        {
+            return;
+        }
         moveInput = ctx.ReadValue<Vector2>();
     }
 
     public void OnJump(InputAction.CallbackContext ctx)
     {
+        if (isActive == false)
+        {
+            return;
+        }
         if (ctx.performed && grounded)
         {
             grounded = false;
@@ -69,6 +82,10 @@ public class MyCharacterController : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext ctx)
     {
+        if (isActive == false)
+        {
+            return;
+        }
         Vector2 lookInput = ctx.ReadValue<Vector2>();
 
         if (lookInput.x != 0f)
@@ -99,6 +116,10 @@ public class MyCharacterController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (isActive == false)
+        {
+            return;
+        }
         if ((groundMask & (1 << collision.gameObject.layer)) != 0)
         {
             grounded = true;
