@@ -20,6 +20,7 @@ public class ObjectClicker : MonoBehaviour
             if (interactable != null)
             {
                 interactable.OnInteract();
+                Debug.Log("clicked on interactable object: " + hit.collider.name);
             }
         }
     }
