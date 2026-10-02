@@ -2,7 +2,7 @@
 - Project name: Assimulate
 - Unity version: Unity 6000.3.19f1
 - Active game object:
-  - Name: Parasite
+  - Name: Characters
   - Tag: Untagged
-  - Layer: Player
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
