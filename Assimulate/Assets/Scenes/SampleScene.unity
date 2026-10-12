@@ -965,6 +965,9 @@ GameObject:
   - component: {fileID: 1525761898}
   - component: {fileID: 1525761897}
   - component: {fileID: 1525761896}
+  - component: {fileID: 1525761902}
+  - component: {fileID: 1525761901}
+  - component: {fileID: 1525761903}
   m_Layer: 7
   m_Name: Parasite
   m_TagString: Untagged
@@ -1095,6 +1098,63 @@ Transform:
   - {fileID: 641854765}
   m_Father: {fileID: 932441028}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1525761901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525761892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e91bf1e55905b4694caccbbd14381f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundSet
+  name: walk
+  sounds:
+  - {fileID: 8300000, guid: 331656ce2557efa4498a3c1762f4bf8f, type: 3}
+  - {fileID: 8300000, guid: 9c145e26aea775b4c93f004c32944542, type: 3}
+  - {fileID: 8300000, guid: 0607b45c878bfa64f82cbe03448e47ec, type: 3}
+  - {fileID: 8300000, guid: 690af7f9dc282ab4dab21f03a150c5ac, type: 3}
+  - {fileID: 8300000, guid: 73da4c7336750ad4a9087d8820d8e86a, type: 3}
+  randomizeOrder: 1
+  pitchVariationThreshold: 0.1
+  soundCooldown: 0.3
+  cooldownVariationThreshold: 0.1
+--- !u!114 &1525761902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525761892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85dd2a64b201c643ac334fcc29fdefd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParisiteBody
+  characterController: {fileID: 2011911690}
+--- !u!114 &1525761903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525761892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e91bf1e55905b4694caccbbd14381f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundSet
+  name: jump
+  sounds:
+  - {fileID: 8300000, guid: 3adb1e0f300d1b8429222ad413269954, type: 3}
+  - {fileID: 8300000, guid: 00c2567c29ff2d346ad4387d9a63bb58, type: 3}
+  - {fileID: 8300000, guid: 444498da3f232f048ab57aa81d82b66e, type: 3}
+  randomizeOrder: 1
+  pitchVariationThreshold: 0.2
+  soundCooldown: 0
+  cooldownVariationThreshold: 0
 --- !u!1 &2011911688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,6 +1165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2011911689}
   - component: {fileID: 2011911690}
+  - component: {fileID: 2011911691}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1141,12 +1202,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterController
   orbitalCamera: {fileID: 1044889449}
   parasite: {fileID: 1525761896}
+  parasiteBody: {fileID: 1525761902}
   moveSpeed: 4
   turnSpeed: 12
   jumpSpeed: 3
   interactRange: 1.5
   parasiteCameraHeight: 0.2
   parasiteCameraDistance: 2
+--- !u!114 &2011911691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011911688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e91bf1e55905b4694caccbbd14381f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundSet
+  name: bite
+  sounds:
+  - {fileID: 8300000, guid: f04edd0da641cc14ab615fb06e2bd1a1, type: 3}
+  - {fileID: 8300000, guid: bf135a3a28396244099dc88ffc1e6e65, type: 3}
+  randomizeOrder: 1
+  pitchVariationThreshold: 0.2
+  soundCooldown: 0
+  cooldownVariationThreshold: 0
 --- !u!1 &2094827592
 GameObject:
   m_ObjectHideFlags: 0

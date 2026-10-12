@@ -9,6 +9,9 @@ public class CharacterController : MonoBehaviour
     [SerializeField] 
     Rigidbody parasite;
 
+    [SerializeField]
+    ParasiteBody parasiteBody;
+
     [Header("Movement")]
     [SerializeField] 
     float moveSpeed = 4f;
@@ -34,6 +37,9 @@ public class CharacterController : MonoBehaviour
     Host host;            
     Host nearbyHost;
 
+    private SoundSet bitingSoundSet;
+
+
     //Connects to the input action system
     InputAction move, look, jump, interact;
 
@@ -47,6 +53,9 @@ public class CharacterController : MonoBehaviour
 
         //Sets the first player controlled create to be the parasite
         body = parasite;
+
+        //biting sound (ideally this should be in the parisite body script but the parasite stuff is tangled up with the character controller right now)
+        bitingSoundSet = gameObject.GetComponent<SoundSet>();
     }
 
     void Start()
@@ -87,6 +96,9 @@ public class CharacterController : MonoBehaviour
         {
             Vector3 v = body.linearVelocity;
             body.linearVelocity = new Vector3(v.x, jumpSpeed, v.z);
+
+            //play jump sound
+            parasiteBody.PlayJumpSound();
         }
     }
 
@@ -170,6 +182,11 @@ public class CharacterController : MonoBehaviour
         //(may be removed later depending on how rex wants to do the possession animations)
         parasite.gameObject.SetActive(false);
         orbitalCamera.Follow(host.transform, host.cameraHeight, host.cameraDistance);
+
+        //play 1 bite noise and then stop
+        //ideally I would like this to be in the parasite body script but right now the parasite is very entangled
+        // with the character controller so I am making due with what I got
+        bitingSoundSet.PlaySet(1);
     }
 
     /// <summary>
@@ -195,7 +212,7 @@ public class CharacterController : MonoBehaviour
 
     //helper methods
 
-    bool IsGrounded()
+    public bool IsGrounded()
     {
         //get whatever collider the player is currently in
         Bounds b = body.GetComponent<Collider>().bounds;
