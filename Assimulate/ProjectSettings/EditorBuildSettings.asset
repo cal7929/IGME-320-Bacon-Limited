@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test Scene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Level Selector.unity
+    guid: 126088f3df7578840bb0654d55da1dd3
+  - enabled: 1
+    path: Assets/Scenes/Playtest Level.unity
+    guid: 508a4320dd557f34db01e4f3ae5a5f31
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
