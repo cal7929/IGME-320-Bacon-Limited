@@ -42,7 +42,7 @@ public class CharacterController : MonoBehaviour
 
 
     //Connects to the input action system
-    InputAction move, look, jump, interact;
+    InputAction move, look, jump, interact, reset, mainmenu;
 
     void Awake()
     {
@@ -51,6 +51,8 @@ public class CharacterController : MonoBehaviour
         look = InputSystem.actions.FindAction("Player/Look", true);
         jump = InputSystem.actions.FindAction("Player/Jump", true);
         interact = InputSystem.actions.FindAction("Player/Interact", true);
+        reset = InputSystem.actions.FindAction("Player/Reload", true);
+        mainmenu = InputSystem.actions.FindAction("Player/MainMenu", true);
 
         //Sets the first player controlled create to be the parasite
         body = parasite;
@@ -100,6 +102,16 @@ public class CharacterController : MonoBehaviour
 
             //play jump sound
             parasiteBody.PlayJumpSound();
+        }
+
+        if (reset.WasPerformedThisFrame())
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (mainmenu.WasPerformedThisFrame())
+        {
+            SceneManager.LoadScene("Level Selector");
         }
     }
 
@@ -228,7 +240,7 @@ public class CharacterController : MonoBehaviour
         orbitalCamera.Follow(parasite.transform, parasiteCameraHeight, parasiteCameraDistance);
     }
 
-    public void OnResetLevel(InputAction.CallbackContext context)
+    public void OnReset(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
@@ -236,7 +248,7 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    public void OnBackToMainMenu(InputAction.CallbackContext context)
+    public void OnMainMenu(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
