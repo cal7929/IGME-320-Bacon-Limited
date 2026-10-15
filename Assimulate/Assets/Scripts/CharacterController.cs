@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class CharacterController : MonoBehaviour
 {
@@ -225,5 +226,21 @@ public class CharacterController : MonoBehaviour
     {
         //Points the camera at the parasite
         orbitalCamera.Follow(parasite.transform, parasiteCameraHeight, parasiteCameraDistance);
+    }
+
+    public void OnResetLevel(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    public void OnBackToMainMenu(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            SceneManager.LoadScene("Level Selector");
+        }
     }
 }
