@@ -228,7 +228,7 @@ public class CharacterController : MonoBehaviour
     public bool IsGrounded()
     {
         //get whatever collider the player is currently in
-        Debug.Log(body);
+        //Debug.Log(body);
         Bounds b = body.GetComponent<Collider>().bounds;
 
         //Cast a ray from the center straight down, this allows for small gaps to still be considered grounded
