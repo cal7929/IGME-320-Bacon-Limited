@@ -4,19 +4,34 @@ public class Buttons : MonoBehaviour
 {
     [SerializeField] public HelpWithButtons helpWithButtons;
 
+    [SerializeField] private GameObject button;
+
+    [SerializeField] private MeshRenderer buttonMesh;
+
     [SerializeField] public Material buttonOn;
     [SerializeField] public Material buttonOff;
 
     [SerializeField] private GameObject laser;
+
+    
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("InteractableObj"))
         {
             Debug.Log("Button pressed");
+            //Make the buttons pressed +1
             helpWithButtons.buttonsPressed++;
-            //this.GetComponent<MeshRenderer>().material = buttonOn;
-            //transform.position = new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z);
+
+            //Change the button to green 
+            buttonMesh.material = buttonOn;
+
+            //Move button down
+            button.transform.position = new Vector3(
+                button.transform.position.x, 
+                button.transform.position.y - .05f, 
+                button.transform.position.z);
+            //If buttons pressed equal 4 set the laser to invisible 
             if (helpWithButtons.buttonsPressed == 4)
             {
                 laser.SetActive(false);
@@ -30,9 +45,17 @@ public class Buttons : MonoBehaviour
     {
         if (other.CompareTag("InteractableObj"))
         {
+            //Make the buttons pressed -1
             helpWithButtons.buttonsPressed--;
-            //this.GetComponent<MeshRenderer>().material = buttonOff;
-            //transform.position = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
+
+            //Change the button to red 
+            buttonMesh.material = buttonOff;
+
+            //Move the button back up
+            button.transform.position = new Vector3(
+                button.transform.position.x,
+                button.transform.position.y + .05f,
+                button.transform.position.z);
             //if laser is invisible, make it visible again
             if (helpWithButtons.buttonsPressed != 4)
             {
