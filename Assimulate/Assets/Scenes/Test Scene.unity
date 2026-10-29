@@ -465,6 +465,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &605703820 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5923980714863743051, guid: 458c4ca9b8831ec4cb946a41b31276f2, type: 3}
+  m_PrefabInstance: {fileID: 5083522504992616298}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &824537859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +1009,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4179279053536369035, guid: b2f1b81c771dec74f8ad74b48740e5d2, type: 3}
   m_PrefabInstance: {fileID: 636046390672705475}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1262500481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262500474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f891dba5901b84d9939017512b9f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Movement
+  moveSpeed: 4
+  turnSpeed: 12
+  canJump: 0
+  jumpSpeed: 5
 --- !u!1 &1284476202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,27 +1137,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1214588950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1525761896 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 7386218047350396141, guid: 458c4ca9b8831ec4cb946a41b31276f2, type: 3}
-  m_PrefabInstance: {fileID: 5083522504992616298}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1525761900 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8176615223459397571, guid: 458c4ca9b8831ec4cb946a41b31276f2, type: 3}
   m_PrefabInstance: {fileID: 5083522504992616298}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1525761902 stripped
+--- !u!114 &1525761901
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7070563128944570447, guid: 458c4ca9b8831ec4cb946a41b31276f2, type: 3}
-  m_PrefabInstance: {fileID: 5083522504992616298}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 605703820}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a85dd2a64b201c643ac334fcc29fdefd, type: 3}
+  m_Script: {fileID: 11500000, guid: 29f891dba5901b84d9939017512b9f66, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ParisiteBody
+  m_EditorClassIdentifier: Assembly-CSharp::Movement
+  moveSpeed: 4
+  turnSpeed: 12
+  canJump: 1
+  jumpSpeed: 5
+--- !u!54 &1525761905 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 7386218047350396141, guid: 458c4ca9b8831ec4cb946a41b31276f2, type: 3}
+  m_PrefabInstance: {fileID: 5083522504992616298}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2011911688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,8 +1172,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2011911689}
-  - component: {fileID: 2011911690}
   - component: {fileID: 2011911691}
+  - component: {fileID: 2011911693}
+  - component: {fileID: 2011911692}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1170,27 +1197,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2011911690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011911688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fceb71e59fca8d94ca309ef7effbb6dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterController
-  orbitalCamera: {fileID: 1044889449}
-  parasite: {fileID: 1525761896}
-  parasiteBody: {fileID: 1525761902}
-  moveSpeed: 4
-  turnSpeed: 12
-  jumpSpeed: 3
-  interactRange: 1.5
-  parasiteCameraHeight: 0.2
-  parasiteCameraDistance: 2
 --- !u!114 &2011911691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1198,7 +1204,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011911688}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2e91bf1e55905b4694caccbbd14381f, type: 3}
   m_Name: 
@@ -1211,6 +1217,37 @@ MonoBehaviour:
   pitchVariationThreshold: 0.2
   soundCooldown: 0
   cooldownVariationThreshold: 0
+--- !u!114 &2011911692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011911688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2de365e5b60b80479540c98cd37f7ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PossessionHandler
+  orbitalCamera: {fileID: 1044889449}
+  parasite: {fileID: 1525761905}
+  interactRange: 1.5
+  parasiteCameraHeight: 0.2
+  parasiteCameraDistance: 2
+--- !u!114 &2011911693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011911688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fceb71e59fca8d94ca309ef7effbb6dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  orbitalCamera: {fileID: 1044889449}
+  possessionHandler: {fileID: 2011911692}
 --- !u!1 &2094827592 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8552322433113289268, guid: 1295e42bbd5d4bf43a23272a752c35c6, type: 3}
@@ -1221,6 +1258,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8098679516955620954, guid: 1295e42bbd5d4bf43a23272a752c35c6, type: 3}
   m_PrefabInstance: {fileID: 1407008541537006798}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2094827601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094827592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f891dba5901b84d9939017512b9f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Movement
+  moveSpeed: 4
+  turnSpeed: 12
+  canJump: 0
+  jumpSpeed: 5
 --- !u!1001 &36654146411677478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1356,7 +1409,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3273604870963181645, guid: b2f1b81c771dec74f8ad74b48740e5d2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1262500481}
   m_SourcePrefab: {fileID: 100100000, guid: b2f1b81c771dec74f8ad74b48740e5d2, type: 3}
 --- !u!1001 &1407008541537006798
 PrefabInstance:
@@ -1417,7 +1473,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8552322433113289268, guid: 1295e42bbd5d4bf43a23272a752c35c6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2094827601}
   m_SourcePrefab: {fileID: 100100000, guid: 1295e42bbd5d4bf43a23272a752c35c6, type: 3}
 --- !u!114 &1542290372854706410
 MonoBehaviour:
@@ -1535,14 +1594,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 932441028}
     m_Modifications:
+    - target: {fileID: 2317427299231419917, guid: 458c4ca9b8831ec4cb946a41b31276f2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3208310994350918990, guid: 458c4ca9b8831ec4cb946a41b31276f2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5923980714863743051, guid: 458c4ca9b8831ec4cb946a41b31276f2, type: 3}
       propertyPath: m_Name
       value: Parasite
       objectReference: {fileID: 0}
     - target: {fileID: 7070563128944570447, guid: 458c4ca9b8831ec4cb946a41b31276f2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070563128944570447, guid: 458c4ca9b8831ec4cb946a41b31276f2, type: 3}
       propertyPath: characterController
       value: 
-      objectReference: {fileID: 2011911690}
+      objectReference: {fileID: 0}
     - target: {fileID: 8176615223459397571, guid: 458c4ca9b8831ec4cb946a41b31276f2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.82888
@@ -1586,7 +1657,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5923980714863743051, guid: 458c4ca9b8831ec4cb946a41b31276f2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1525761901}
   m_SourcePrefab: {fileID: 100100000, guid: 458c4ca9b8831ec4cb946a41b31276f2, type: 3}
 --- !u!135 &6267657666816992299
 SphereCollider:
@@ -1792,6 +1866,7 @@ GameObject:
   - component: {fileID: 1646434234325305188}
   - component: {fileID: 1542290372854706410}
   - component: {fileID: 8552322433275285482}
+  - component: {fileID: 8552322433275285483}
   m_Layer: 7
   m_Name: Movement
   m_TagString: Player
@@ -1812,6 +1887,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Airdash
   dashSpeed: 10
+--- !u!114 &8552322433275285483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8552322433275285481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f891dba5901b84d9939017512b9f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Movement
+  moveSpeed: 4
+  turnSpeed: 12
+  canJump: 1
+  jumpSpeed: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1819,8 +1910,8 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1044889445}
+  - {fileID: 2011911689}
   - {fileID: 932441028}
   - {fileID: 1214588950}
-  - {fileID: 2011911689}
   - {fileID: 518727379}
   - {fileID: 469706749}

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ParasiteBody : MonoBehaviour
 {
-    [SerializeField] public CharacterController characterController;
+    [SerializeField] public PlayerController playerController;
     private Rigidbody _body;
     private SoundSet _walkingSoundSet;
     private SoundSet _jumpingSoundSet;
@@ -45,8 +45,9 @@ public class ParasiteBody : MonoBehaviour
     {
         #region Walking
 
+        /* This is commented out to avoid compilation errors for now.
         //if the parasite is on the ground and is moving faster than 0.1, play the walking sound set
-        if(characterController.IsGrounded() && _body.linearVelocity.magnitude > 0.1f)
+        if(playerController.IsGrounded() && _body.linearVelocity.magnitude > 0.1f)
         {
             _walkingSoundSet.PlaySet();
         }
@@ -54,6 +55,7 @@ public class ParasiteBody : MonoBehaviour
         {
             _walkingSoundSet.StopSet();
         }
+        */
 
         #endregion
     }
