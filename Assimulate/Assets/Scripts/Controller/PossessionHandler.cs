@@ -33,6 +33,11 @@ public class PossessionHandler : MonoBehaviour
     Movement parasiteMovement;
     Host nearbyHost;
 
+    //Events for primarily sound effect purposes,
+    //these can be used by other scripts to trigger stuff when the specific event happens.
+    public event System.Action<Host> Possessed;
+    public event System.Action<Host> Released;
+
     void Awake()
     {
         //The player always starts as the parasite
@@ -134,6 +139,9 @@ public class PossessionHandler : MonoBehaviour
         //Hide the parasite while it is inside the host, and then set camera to follow the host
         parasite.gameObject.SetActive(false);
         orbitalCamera.Follow(target.transform, target.cameraHeight, target.cameraDistance);
+
+        //Send a signal that the target host been possessed
+        Possessed?.Invoke(target);
     }
 
     /// <summary>
@@ -150,6 +158,10 @@ public class PossessionHandler : MonoBehaviour
         parasite.transform.position = CurrentHost.transform.TransformPoint(CurrentHost.ejectOffset);
         parasite.gameObject.SetActive(true);
         parasite.linearVelocity = Vector3.zero;
+
+        //Send a signal that the current host has been released
+        Host previousHost = CurrentHost;
+        Released?.Invoke(previousHost);
 
         //Make the parasite the controlled creature again
         CurrentHost = null;

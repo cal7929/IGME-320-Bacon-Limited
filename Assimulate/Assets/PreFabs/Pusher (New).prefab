@@ -96,6 +96,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46e9b95454a87504c99f1351a33ea1db, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5448647501764142600}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46e9b95454a87504c99f1351a33ea1db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7968937425914416447}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46e9b95454a87504c99f1351a33ea1db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2325242807519145763}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46e9b95454a87504c99f1351a33ea1db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3653519189230329419}
   m_SourcePrefab: {fileID: 100100000, guid: 46e9b95454a87504c99f1351a33ea1db, type: 3}
 --- !u!1 &6360692477715376138 stripped
 GameObject:
@@ -164,7 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Host
   cameraHeight: 1.2
   cameraDistance: 5
-  ejectOffset: {x: 0, y: 2, z: 0}
+  ejectOffset: {x: 0, y: 1, z: 0}
   prompt: {fileID: 0}
 --- !u!114 &5448647501764142600
 MonoBehaviour:
@@ -183,3 +192,59 @@ MonoBehaviour:
   canJump: 0
   jumpSpeed: 5
   gravityMultiplier: 1
+--- !u!114 &7968937425914416447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6360692477715376138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85dd2a64b201c643ac334fcc29fdefd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundBody
+  isWalkingSpeed: 0.1
+--- !u!114 &-2325242807519145763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6360692477715376138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e91bf1e55905b4694caccbbd14381f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundSet
+  name: walk
+  sounds:
+  - {fileID: 8300000, guid: 331656ce2557efa4498a3c1762f4bf8f, type: 3}
+  - {fileID: 8300000, guid: 9c145e26aea775b4c93f004c32944542, type: 3}
+  - {fileID: 8300000, guid: 0607b45c878bfa64f82cbe03448e47ec, type: 3}
+  - {fileID: 8300000, guid: 690af7f9dc282ab4dab21f03a150c5ac, type: 3}
+  - {fileID: 8300000, guid: 73da4c7336750ad4a9087d8820d8e86a, type: 3}
+  randomizeOrder: 1
+  pitchVariationThreshold: 0.1
+  soundCooldown: 0.3
+  cooldownVariationThreshold: 0.1
+--- !u!114 &-3653519189230329419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6360692477715376138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e91bf1e55905b4694caccbbd14381f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundSet
+  name: bite
+  sounds:
+  - {fileID: 8300000, guid: f04edd0da641cc14ab615fb06e2bd1a1, type: 3}
+  - {fileID: 8300000, guid: bf135a3a28396244099dc88ffc1e6e65, type: 3}
+  randomizeOrder: 1
+  pitchVariationThreshold: 0.1
+  soundCooldown: 0
+  cooldownVariationThreshold: 0

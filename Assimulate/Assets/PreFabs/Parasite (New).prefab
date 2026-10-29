@@ -92,10 +92,10 @@ PrefabInstance:
       addedObject: {fileID: 1955981119125753610}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2622000769e9b3e43a43d6f0c16ec261, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1302650648023940504}
+      addedObject: {fileID: 7396014398798793961}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2622000769e9b3e43a43d6f0c16ec261, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7396014398798793961}
+      addedObject: {fileID: 1302650648023940504}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2622000769e9b3e43a43d6f0c16ec261, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9152192293798536931}
@@ -133,7 +133,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &1955981119125753610
 BoxCollider:
@@ -156,19 +156,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.25, z: 0.4}
   m_Center: {x: 0, y: 0.125, z: 0}
---- !u!114 &1302650648023940504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819819917061679311}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a85dd2a64b201c643ac334fcc29fdefd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ParisiteBody
-  playerController: {fileID: 0}
 --- !u!114 &7396014398798793961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +173,19 @@ MonoBehaviour:
   canJump: 1
   jumpSpeed: 2.5
   gravityMultiplier: 1
+--- !u!114 &1302650648023940504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819819917061679311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85dd2a64b201c643ac334fcc29fdefd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParisiteBody
+  isWalkingSpeed: 0.1
 --- !u!114 &9152192293798536931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819819917061679311}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2e91bf1e55905b4694caccbbd14381f, type: 3}
   m_Name: 
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819819917061679311}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2e91bf1e55905b4694caccbbd14381f, type: 3}
   m_Name: 

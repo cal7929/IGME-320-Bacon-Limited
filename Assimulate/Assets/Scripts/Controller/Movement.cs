@@ -25,6 +25,10 @@ public class Movement : MonoBehaviour
     Rigidbody body;
     Collider col;
 
+    //Event for primarily sound effect purposes,
+    //these can be used by other scripts to trigger stuff when the specific event happens.
+    public event System.Action Jumped;
+
     void Awake()
     {
         body = GetComponent<Rigidbody>();
@@ -64,6 +68,8 @@ public class Movement : MonoBehaviour
 
         Vector3 v = body.linearVelocity;
         body.linearVelocity = new Vector3(v.x, jumpSpeed, v.z);
+
+        Jumped?.Invoke();
     }
 
     public bool IsGrounded()
