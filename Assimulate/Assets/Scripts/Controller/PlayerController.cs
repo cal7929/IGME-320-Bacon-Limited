@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -15,10 +16,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     PossessionHandler possessionHandler;
 
+    [SerializeField]
+    GameObject pauseContainer;
+
     public string menuName = "Level Selector";
 
     //Connects to the input action system
-    InputAction move, look, jump, interact, reload, mainmenu;
+    InputAction move, look, jump, interact, reload, pause;
 
     void Awake()
     {
@@ -27,7 +31,7 @@ public class PlayerController : MonoBehaviour
         jump = InputSystem.actions.FindAction("Player/Jump", true);
         interact = InputSystem.actions.FindAction("Player/Interact", true);
         reload = InputSystem.actions.FindAction("Player/Reload", true);
-        mainmenu = InputSystem.actions.FindAction("Player/MainMenu", true);
+        pause = InputSystem.actions.FindAction("Player/MainMenu", true);
     }
 
     void Start()
@@ -58,9 +62,13 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        if (mainmenu.WasPerformedThisFrame())
+        if (pause.WasPerformedThisFrame())
         {
-            SceneManager.LoadScene(menuName);
+            pauseContainer.SetActive(true);
+            Time.timeScale = 0;
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
