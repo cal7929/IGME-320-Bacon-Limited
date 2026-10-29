@@ -19,6 +19,8 @@ public class Movement : MonoBehaviour
     bool canJump = true;
     [SerializeField]
     float jumpSpeed = 5f;
+    [SerializeField] 
+    float gravityMultiplier = 1.0f;
 
     Rigidbody body;
     Collider col;
@@ -70,5 +72,14 @@ public class Movement : MonoBehaviour
 
         //Cast a ray from the center straight down, this allows for small gaps to still be considered grounded
         return Physics.Raycast(b.center, Vector3.down, b.extents.y + 0.1f, ~0, QueryTriggerInteraction.Ignore);
+    }
+    void FixedUpdate()
+    {
+        // Calculate the extra gravity force needed
+        // (multiplier - 1) accounts for the default gravity already being applied
+        Vector3 extraGravityForce = Physics.gravity * (gravityMultiplier - 1);
+
+        // ForceMode.Acceleration ensures mass doesn't alter the falling speed
+        body.AddForce(extraGravityForce, ForceMode.Acceleration);
     }
 }

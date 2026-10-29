@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 8128420818547310607}
   - component: {fileID: 1646434234453768889}
   - component: {fileID: 1542290372999925047}
+  - component: {fileID: 728507189521507567}
   m_Layer: 7
   m_Name: Push
   m_TagString: Player
@@ -141,7 +142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8552322433113289268}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 2.56, y: 1.033, z: 3.163}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -272,3 +273,20 @@ MonoBehaviour:
   cameraDistance: 5
   ejectOffset: {x: 0, y: 2, z: 0}
   prompt: {fileID: 0}
+--- !u!114 &728507189521507567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8552322433113289268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f891dba5901b84d9939017512b9f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Movement
+  moveSpeed: 4
+  turnSpeed: 12
+  canJump: 0
+  jumpSpeed: 5
+  gravityMultiplier: 1

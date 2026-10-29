@@ -2,7 +2,7 @@
 - Project name: Assimulate
 - Unity version: Unity 6000.3.19f1
 - Active game object:
-  - Name: Canvas
-  - Tag: Untagged
-  - Layer: UI
+  - Name: Parasite
+  - Tag: Player
+  - Layer: Player
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

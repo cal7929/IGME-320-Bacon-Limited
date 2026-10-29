@@ -1,36 +1,61 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Airdash : MonoBehaviour
 {
-    [SerializeField] float dashSpeed;
+    [SerializeField] float dashForce = 15f;
+    [SerializeField] PlayerController playerController;
+
     InputAction dash;
-    Rigidbody body;    
+    Rigidbody body;
+    Movement movement;
+    bool isDashing;
 
     void Awake()
     {
         dash = InputSystem.actions.FindAction("Player/Dash", true);
-
-        if(dashSpeed <= 0)
-        {
-            dashSpeed = 5; // Default dash speed
-        }
         body = GetComponent<Rigidbody>();
+        movement = GetComponent<Movement>();
+
+        if (playerController == null)
+        {
+            playerController = GetComponentInParent<PlayerController>();
+        }
     }
-    // Update is called once per frame
+
     void Update()
     {
-        if (dash.WasPressedThisFrame())
+        if (dash.WasPressedThisFrame() && !isDashing)
         {
-            PerformDash();
+            StartCoroutine(PerformDash());
         }
     }
 
-    void PerformDash()
+    IEnumerator PerformDash()
     {
-        Vector3 v = body.linearVelocity;
-        body.linearVelocity = new Vector3(dashSpeed * v.x, 0, dashSpeed * v.z);
-        //body.linearVelocity = new Vector3(v.x, dashSpeed, v.z);
-        Debug.Log("Dash Performed");
+        isDashing = true;
+
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+        }
+
+        //remove existing horizontal movement before applying the dash.
+        Vector3 velocity = body.linearVelocity;
+        body.linearVelocity = new Vector3(0f, velocity.y, 0f);
+
+        //apply impulse.
+        body.AddForce(transform.forward * dashForce, ForceMode.Impulse);
+
+        //hold the dash for a short duration before re-enabling player control via the coroutine.
+        yield return new WaitUntil(() => movement.IsGrounded());
+
+        if (playerController != null)
+        {
+            playerController.enabled = true;
+        }
+
+        isDashing = false;
     }
 }

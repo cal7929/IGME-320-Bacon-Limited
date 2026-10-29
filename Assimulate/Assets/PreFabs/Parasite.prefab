@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 7070563128944570447}
   - component: {fileID: 2317427299231419917}
   - component: {fileID: 3208310994350918990}
+  - component: {fileID: 6485126556772490787}
   m_Layer: 7
   m_Name: Parasite
   m_TagString: Player
@@ -143,7 +144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5923980714863743051}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 2.82888, y: 1.05, z: 1.41362}
   m_LocalScale: {x: 0.20000002, y: 0.2, z: 0.20000002}
   m_ConstrainProportionsScale: 0
@@ -265,12 +266,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5923980714863743051}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a85dd2a64b201c643ac334fcc29fdefd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParisiteBody
-  characterController: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!114 &2317427299231419917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +279,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5923980714863743051}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2e91bf1e55905b4694caccbbd14381f, type: 3}
   m_Name: 
@@ -301,7 +302,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5923980714863743051}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2e91bf1e55905b4694caccbbd14381f, type: 3}
   m_Name: 
@@ -315,3 +316,20 @@ MonoBehaviour:
   pitchVariationThreshold: 0.2
   soundCooldown: 0
   cooldownVariationThreshold: 0
+--- !u!114 &6485126556772490787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5923980714863743051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f891dba5901b84d9939017512b9f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Movement
+  moveSpeed: 4
+  turnSpeed: 12
+  canJump: 1
+  jumpSpeed: 2.5
+  gravityMultiplier: 1
