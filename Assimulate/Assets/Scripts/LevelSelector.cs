@@ -5,13 +5,16 @@ public class LevelSelector : MonoBehaviour
 {
     public void StartSandbox()
     {
-        SceneManager.LoadScene("Test Scene");
+        SceneManager.LoadScene(1);
     }
 
-    public void StartPlaytest()
+    public void StartLevel1()
     {
-        Debug.Log("Starting Playtest");
-        SceneManager.LoadScene("Playtest Level");
+        SceneManager.LoadScene(2);
+    }
+    public void StartLevel2()
+    {
+        SceneManager.LoadScene(3);
     }
 
     public void QuitGame()

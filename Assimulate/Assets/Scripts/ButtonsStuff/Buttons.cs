@@ -12,6 +12,7 @@ public class Buttons : MonoBehaviour
     [SerializeField] public Material buttonOff;
 
     [SerializeField] private GameObject laser;
+    [SerializeField] private GameObject laser2;
 
     
 
@@ -35,6 +36,7 @@ public class Buttons : MonoBehaviour
             if (helpWithButtons.buttonsPressed == 4)
             {
                 laser.SetActive(false);
+                laser2.SetActive(false);
                 //delete laser in front of the player or hide it so it doesn't activate
             }
             Debug.Log(helpWithButtons.buttonsPressed);
@@ -60,6 +62,7 @@ public class Buttons : MonoBehaviour
             if (helpWithButtons.buttonsPressed != 4)
             {
                 laser.SetActive(true);
+                laser2.SetActive(true);
                 //delete laser in front of the player or hide it so it doesn't activate
             }
             Debug.Log(helpWithButtons.buttonsPressed);
