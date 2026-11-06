@@ -26,7 +26,7 @@ public class Airdash : MonoBehaviour
 
     void Update()
     {
-        if (dash.WasPressedThisFrame() && !isDashing)
+        if (dash.WasPressedThisFrame() && !isDashing && !movement.IsGrounded())
         {
             StartCoroutine(PerformDash());
         }

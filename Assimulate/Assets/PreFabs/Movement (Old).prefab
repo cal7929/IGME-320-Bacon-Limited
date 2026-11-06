@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 8856326373428683670}
   - component: {fileID: -3398566473480344128}
   m_Layer: 7
-  m_Name: Movement
+  m_Name: Movement (Old)
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
