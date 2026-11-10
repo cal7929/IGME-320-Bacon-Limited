@@ -1593,6 +1593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseStuff
   pauseContainer: {fileID: 181396027}
+  playerController: {fileID: 2011911693}
 --- !u!114 &944543534
 MonoBehaviour:
   m_ObjectHideFlags: 0

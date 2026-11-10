@@ -7,8 +7,12 @@ public class PauseStuff : MonoBehaviour
 {
 
     [SerializeField] GameObject pauseContainer;
+
+    [SerializeField] PlayerController playerController;
     public void ResumeButton()
     {
+        playerController.IsPaused = false;
+
         pauseContainer.SetActive(false);
         Time.timeScale = 1;
 

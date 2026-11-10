@@ -43,6 +43,9 @@ public class PossessionHandler : MonoBehaviour
         //The player always starts as the parasite
         parasiteMovement = parasite.GetComponent<Movement>();
         CurrentMovement = parasiteMovement;
+
+        //Sets parasite's friction to no friction 
+        parasiteMovement.SetFriction(true);
     }
 
     void Start()
@@ -136,6 +139,9 @@ public class PossessionHandler : MonoBehaviour
         CurrentHost = target;
         CurrentMovement = targetMovement;
 
+        //Make the new targets friction 0
+        targetMovement.SetFriction(true);
+
         //Hide the parasite while it is inside the host, and then set camera to follow the host
         parasite.gameObject.SetActive(false);
         orbitalCamera.Follow(target.transform, target.cameraHeight, target.cameraDistance);
@@ -149,21 +155,19 @@ public class PossessionHandler : MonoBehaviour
     /// </summary>
     void Release()
     {
-        //Stops sideways velocity from the host so it doesn't keep moving after you leave, vertical is kept so it doesn't stick in the air
-        Rigidbody hostBody = CurrentHost.Body;
-        Vector3 v = hostBody.linearVelocity;
-        hostBody.linearVelocity = new Vector3(0f, v.y, 0f);
+        //Return all friction to the creature
+        CurrentHost.GetComponent<Movement>().SetFriction(false);
 
-        //Reactivate the parasite at the eject point
+        //Activate the parasite to be controlled by the player again
         parasite.transform.position = CurrentHost.transform.TransformPoint(CurrentHost.ejectOffset);
         parasite.gameObject.SetActive(true);
         parasite.linearVelocity = Vector3.zero;
+        parasiteMovement.SetFriction(true);
 
-        //Send a signal that the current host has been released
+        //Mark the creature that was just left, mostly for sound purposes
         Host previousHost = CurrentHost;
         Released?.Invoke(previousHost);
 
-        //Make the parasite the controlled creature again
         CurrentHost = null;
         CurrentMovement = parasiteMovement;
         FollowParasite();

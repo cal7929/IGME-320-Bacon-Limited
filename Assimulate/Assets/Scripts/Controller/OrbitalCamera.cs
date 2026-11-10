@@ -67,6 +67,7 @@ public class OrbitalCamera : MonoBehaviour
     /// </summary>
     void LateUpdate()
     {
+        //If the camera does not have a body do not move camera
         if (target == null) return;
 
         //Smoothly slide the pivot toward the target's position, raised by the target's camera height.
@@ -85,7 +86,7 @@ public class OrbitalCamera : MonoBehaviour
         //Start with the full distance, then pull the camera closer if something is in the way
         float d = currentDistance;
 
-        //Sweep a small sphere from the pivot toward the camera position. If it hits a wall or obstacle,
+        //Sweep a small sphere from the pivot toward the camera position. If it hits an obstacle,
         //move the camera to the hit point instead so it never ends up inside map geometry.
         //The minimum of 0.3 stops it from squashing into the pivot.
         if (Physics.SphereCast(pivot, radius, back, out RaycastHit hit, currentDistance, obstacles, QueryTriggerInteraction.Ignore))
@@ -93,7 +94,19 @@ public class OrbitalCamera : MonoBehaviour
             d = Mathf.Max(hit.distance, 0.3f);
         }
 
+        Vector3 camPos = pivot + back * d;
+
+        //Keep the camera above any ground between pivot height and the camera
+        float dropDistance = Mathf.Max(0f, pivot.y - camPos.y) + radius;
+        Vector3 origin = new Vector3(camPos.x, pivot.y, camPos.z);
+
+        //Prevents camera from moving beyond the floor
+        if (Physics.Raycast(origin, Vector3.down, out RaycastHit groundHit, dropDistance + 0.5f, obstacles, QueryTriggerInteraction.Ignore))
+        {
+            camPos.y = Mathf.Max(camPos.y, groundHit.point.y + radius);
+        }
+
         //Finally, place the camera in the right position based on previous checks and calculations
-        transform.SetPositionAndRotation(pivot + back * d, rotation);
+        transform.SetPositionAndRotation(camPos, rotation);
     }
 }

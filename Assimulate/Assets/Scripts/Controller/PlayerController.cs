@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     //Connects to the input action system
     InputAction move, look, jump, interact, reload, pause;
 
+    public bool IsPaused { get; set; }
+
     void Awake()
     {
         move = InputSystem.actions.FindAction("Player/Move", true);
@@ -38,10 +40,14 @@ public class PlayerController : MonoBehaviour
     {
         //Hide and lock the mouse cursor so mouse movement only rotates the camera
         Cursor.lockState = CursorLockMode.Locked;
+
+        IsPaused = false;
     }
 
     void Update()
     {
+        if (IsPaused) return;
+
         //Read mouse input every frame so the orbital camera can function
         orbitalCamera.Look(look.ReadValue<Vector2>());
 
@@ -64,6 +70,8 @@ public class PlayerController : MonoBehaviour
 
         if (pause.WasPerformedThisFrame())
         {
+            IsPaused = true;
+
             pauseContainer.SetActive(true);
             Time.timeScale = 0;
 
@@ -74,6 +82,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (IsPaused) return;
+
         //Movement is relative to the camera
         possessionHandler.CurrentMovement.Move(move.ReadValue<Vector2>(), orbitalCamera.Yaw);
     }

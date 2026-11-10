@@ -14,6 +14,13 @@ public class Movement : MonoBehaviour
     [SerializeField]
     float turnSpeed = 12f;
 
+    /// <summary>
+    /// Allows other creature specific cripts to seamlessly change the speed and turn speed 
+    /// </summary>
+    public float SpeedMultiplier { get; set; } = 1f;
+    public float TurnMultiplier { get; set; } = 1f;
+
+
     [Header("Jumping")]
     [SerializeField]
     bool canJump = true;
@@ -21,6 +28,10 @@ public class Movement : MonoBehaviour
     float jumpSpeed = 5f;
     [SerializeField] 
     float gravityMultiplier = 1.0f;
+
+    [Header("Friction")]
+    [SerializeField] PhysicsMaterial controlledMaterial;
+    [SerializeField] PhysicsMaterial idleMaterial;
 
     Rigidbody body;
     Collider col;
@@ -36,7 +47,7 @@ public class Movement : MonoBehaviour
     }
 
     /// <summary>
-    /// Moves the creature relative to the camera. Call this from FixedUpdate.
+    /// Moves the creature relative to the camera. Call this from PlayerController's FixedUpdate.
     /// </summary>
     /// <param name="input">Move input</param>
     /// <param name="cameraYaw">The camera's horizontal angle</param>
@@ -47,7 +58,8 @@ public class Movement : MonoBehaviour
 
         //Sets sideways speed from input but keep the current vertical speed, so gravity and jumping still work
         Vector3 v = body.linearVelocity;
-        body.linearVelocity = new Vector3(dir.x * moveSpeed, v.y, dir.z * moveSpeed);
+        float speed = moveSpeed * SpeedMultiplier;
+        body.linearVelocity = new Vector3(dir.x * speed, v.y, dir.z * speed);
 
         //Only turn when there is input, otherwise the creature would snap to face forward,
         //this lets the player keep the creature facing one direction while the camera faces another
@@ -55,7 +67,8 @@ public class Movement : MonoBehaviour
         {
             //Smoothly rotate from the current facing toward the movement direction
             Quaternion target = Quaternion.LookRotation(dir, Vector3.up);
-            body.MoveRotation(Quaternion.Slerp(body.rotation, target, turnSpeed * Time.fixedDeltaTime));
+            float turn = turnSpeed * TurnMultiplier;
+            body.MoveRotation(Quaternion.Slerp(body.rotation, target, turn * Time.fixedDeltaTime));
         }
     }
 
@@ -79,13 +92,25 @@ public class Movement : MonoBehaviour
         //Cast a ray from the center straight down, this allows for small gaps to still be considered grounded
         return Physics.Raycast(b.center, Vector3.down, b.extents.y + 0.1f, ~0, QueryTriggerInteraction.Ignore);
     }
+
+    public void SetFriction(bool controlled)
+    {
+        col.sharedMaterial = controlled ? controlledMaterial : idleMaterial;
+
+        if (!controlled)
+        {
+            Vector3 v = body.linearVelocity;
+            body.linearVelocity = new Vector3(0f, v.y, 0f);
+        }
+    }
+
     void FixedUpdate()
     {
-        // Calculate the extra gravity force needed
-        // (multiplier - 1) accounts for the default gravity already being applied
+        //Calculate the extra gravity force
+        //gravmult - 1 accounts for the default gravity already being applied
         Vector3 extraGravityForce = Physics.gravity * (gravityMultiplier - 1);
 
-        // ForceMode.Acceleration ensures mass doesn't alter the falling speed
+        //ForceMode.Acceleration makes fall speed unaffected by mass
         body.AddForce(extraGravityForce, ForceMode.Acceleration);
     }
 }

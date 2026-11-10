@@ -192,6 +192,8 @@ MonoBehaviour:
   canJump: 0
   jumpSpeed: 5
   gravityMultiplier: 1
+  controlledMaterial: {fileID: 13400000, guid: e1e0263d8198a254a855abbd858a6acb, type: 2}
+  idleMaterial: {fileID: 0}
 --- !u!114 &7968937425914416447
 MonoBehaviour:
   m_ObjectHideFlags: 0
