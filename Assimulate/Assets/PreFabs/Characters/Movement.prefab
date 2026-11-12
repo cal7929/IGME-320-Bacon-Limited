@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 161786652978334592}
   - component: {fileID: 6056676868361065274}
   - component: {fileID: 6734816616466927714}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,9 +110,9 @@ GameObject:
   - component: {fileID: 3142153884271792450}
   - component: {fileID: 8588561329591356855}
   - component: {fileID: 5665616398251555569}
-  m_Layer: 0
-  m_Name: Movement (New)
-  m_TagString: Untagged
+  m_Layer: 7
+  m_Name: Movement
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

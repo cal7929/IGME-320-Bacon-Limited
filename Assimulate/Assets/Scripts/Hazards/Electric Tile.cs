@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DeadlyThing : MonoBehaviour
+public class ElectricTile : MonoBehaviour
 {
     [SerializeField] private GameObject specificPlayer;
     bool isdeadly = true;
