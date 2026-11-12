@@ -13,6 +13,7 @@ public class Buttons : MonoBehaviour
 
     [SerializeField] private GameObject laser;
     [SerializeField] private GameObject laser2;
+    [SerializeField] private GameObject hiddenPlatform;
 
     
 
@@ -33,10 +34,17 @@ public class Buttons : MonoBehaviour
                 button.transform.position.y - .05f, 
                 button.transform.position.z);
             //If buttons pressed equal 4 set the laser to invisible 
-            if (helpWithButtons.buttonsPressed == 4)
+
+            if (helpWithButtons.buttonsPressed == 2)
             {
                 laser.SetActive(false);
+                //delete laser in front of the player or hide it so it doesn't activate
+            }
+            else if (helpWithButtons.buttonsPressed == 4)
+            {
                 laser2.SetActive(false);
+                laser2.SetActive(false);
+                hiddenPlatform.SetActive(true);
                 //delete laser in front of the player or hide it so it doesn't activate
             }
             Debug.Log(helpWithButtons.buttonsPressed);
@@ -59,12 +67,21 @@ public class Buttons : MonoBehaviour
                 button.transform.position.y + .05f,
                 button.transform.position.z);
             //if laser is invisible, make it visible again
-            if (helpWithButtons.buttonsPressed != 4)
+
+            if (helpWithButtons.buttonsPressed == 0)
             {
                 laser.SetActive(true);
                 laser2.SetActive(true);
+                hiddenPlatform.SetActive(false);
                 //delete laser in front of the player or hide it so it doesn't activate
             }
+            else if (helpWithButtons.buttonsPressed == 2)
+            {
+                laser.SetActive(true);
+                hiddenPlatform.SetActive(false);
+                //delete laser in front of the player or hide it so it doesn't activate
+            }
+            
             Debug.Log(helpWithButtons.buttonsPressed);
         }
     }
