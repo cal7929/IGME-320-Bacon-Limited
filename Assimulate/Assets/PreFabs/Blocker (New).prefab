@@ -154,7 +154,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ac93d44fe49fa9346b351e08df806c49, type: 3}
   - {fileID: 8300000, guid: e5afdf90783e9e440afa88d4a133d62e, type: 3}
   - {fileID: 8300000, guid: 82bec6bb90fad2345b402789f79a75c7, type: 3}
-  volume: 1
+  volume: 0.559
   doFadeOut: 0
   fadeOutAmountPerTick: 0
   randomizeOrder: 1
