@@ -12,6 +12,10 @@ public class Airdash : MonoBehaviour
     Movement movement;
     bool isDashing;
 
+    //Event for primarily sound effect purposes,
+    //these can be used by other scripts to trigger stuff when the specific event happens.
+    public event System.Action OnStartDash;
+
     void Awake()
     {
         dash = InputSystem.actions.FindAction("Player/Dash", true);
@@ -29,6 +33,7 @@ public class Airdash : MonoBehaviour
         if (dash.WasPressedThisFrame() && !isDashing && !movement.IsGrounded())
         {
             StartCoroutine(PerformDash());
+            OnStartDash?.Invoke();
         }
     }
 

@@ -38,7 +38,7 @@ public class Movement : MonoBehaviour
 
     //Event for primarily sound effect purposes,
     //these can be used by other scripts to trigger stuff when the specific event happens.
-    public event System.Action Jumped;
+    public event System.Action OnJump;
 
     void Awake()
     {
@@ -82,7 +82,7 @@ public class Movement : MonoBehaviour
         Vector3 v = body.linearVelocity;
         body.linearVelocity = new Vector3(v.x, jumpSpeed, v.z);
 
-        Jumped?.Invoke();
+        OnJump?.Invoke();
     }
 
     public bool IsGrounded()

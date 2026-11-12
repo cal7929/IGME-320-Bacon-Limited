@@ -105,6 +105,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46e9b95454a87504c99f1351a33ea1db, type: 3}
       insertIndex: -1
       addedObject: {fileID: -3653519189230329419}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46e9b95454a87504c99f1351a33ea1db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3089951001964764879}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46e9b95454a87504c99f1351a33ea1db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5269969237279993875}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46e9b95454a87504c99f1351a33ea1db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5861028267246083946}
   m_SourcePrefab: {fileID: 100100000, guid: 46e9b95454a87504c99f1351a33ea1db, type: 3}
 --- !u!1 &6360692477715376138 stripped
 GameObject:
@@ -206,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85dd2a64b201c643ac334fcc29fdefd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundBody
-  isWalkingSpeed: 0.1
+  _MinWalkSpeedForSound: 0.1
 --- !u!114 &-2325242807519145763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,14 +230,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundSet
   name: walk
   sounds:
-  - {fileID: 8300000, guid: 331656ce2557efa4498a3c1762f4bf8f, type: 3}
-  - {fileID: 8300000, guid: 9c145e26aea775b4c93f004c32944542, type: 3}
-  - {fileID: 8300000, guid: 0607b45c878bfa64f82cbe03448e47ec, type: 3}
-  - {fileID: 8300000, guid: 690af7f9dc282ab4dab21f03a150c5ac, type: 3}
-  - {fileID: 8300000, guid: 73da4c7336750ad4a9087d8820d8e86a, type: 3}
+  - {fileID: 8300000, guid: 2190e3c67c5d653479b5ba83e60ae208, type: 3}
+  - {fileID: 8300000, guid: 2f7140a15ec5275438b352a12133c893, type: 3}
+  - {fileID: 8300000, guid: 374d2dca752467f4aa035b288b9bb1da, type: 3}
+  volume: 1
+  doFadeOut: 0
+  fadeOutAmountPerTick: 0
   randomizeOrder: 1
-  pitchVariationThreshold: 0.1
-  soundCooldown: 0.3
+  pitchVariationThreshold: 0.4
+  soundCooldown: 0.5
   cooldownVariationThreshold: 0.1
 --- !u!114 &-3653519189230329419
 MonoBehaviour:
@@ -242,11 +252,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2e91bf1e55905b4694caccbbd14381f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundSet
-  name: bite
+  name: capture
+  sounds:
+  - {fileID: 8300000, guid: 3be94a503ad87ea4b8be726f5da8a597, type: 3}
+  volume: 1
+  doFadeOut: 0
+  fadeOutAmountPerTick: 0
+  randomizeOrder: 0
+  pitchVariationThreshold: 0.2
+  soundCooldown: 0
+  cooldownVariationThreshold: 0
+--- !u!114 &3089951001964764879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6360692477715376138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e91bf1e55905b4694caccbbd14381f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundSet
+  name: pushStart
+  sounds:
+  - {fileID: 8300000, guid: fa15204a953a3d74e80959baf0e4ad69, type: 3}
+  volume: 1
+  doFadeOut: 0
+  fadeOutAmountPerTick: 0
+  randomizeOrder: 1
+  pitchVariationThreshold: 0.1
+  soundCooldown: 0
+  cooldownVariationThreshold: 0
+--- !u!114 &5269969237279993875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6360692477715376138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e91bf1e55905b4694caccbbd14381f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundSet
+  name: push
+  sounds:
+  - {fileID: 8300000, guid: bb7a30153749d0a46958fe9f66f0e74a, type: 3}
+  volume: 0.117
+  doFadeOut: 1
+  fadeOutAmountPerTick: 0.069
+  randomizeOrder: 0
+  pitchVariationThreshold: 0
+  soundCooldown: 0
+  cooldownVariationThreshold: 0
+--- !u!114 &5861028267246083946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6360692477715376138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e91bf1e55905b4694caccbbd14381f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundSet
+  name: release
   sounds:
   - {fileID: 8300000, guid: f04edd0da641cc14ab615fb06e2bd1a1, type: 3}
   - {fileID: 8300000, guid: bf135a3a28396244099dc88ffc1e6e65, type: 3}
+  volume: 1
+  doFadeOut: 0
+  fadeOutAmountPerTick: 0
   randomizeOrder: 1
-  pitchVariationThreshold: 0.1
+  pitchVariationThreshold: 0.2
   soundCooldown: 0
   cooldownVariationThreshold: 0

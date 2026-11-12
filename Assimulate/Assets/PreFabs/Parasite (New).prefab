@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85dd2a64b201c643ac334fcc29fdefd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParisiteBody
-  isWalkingSpeed: 0.1
+  _MinWalkSpeedForSound: 0.1
 --- !u!114 &9152192293798536931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +207,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0607b45c878bfa64f82cbe03448e47ec, type: 3}
   - {fileID: 8300000, guid: 690af7f9dc282ab4dab21f03a150c5ac, type: 3}
   - {fileID: 8300000, guid: 73da4c7336750ad4a9087d8820d8e86a, type: 3}
+  volume: 1
+  doFadeOut: 0
+  fadeOutAmountPerTick: 0
   randomizeOrder: 1
   pitchVariationThreshold: 0.1
   soundCooldown: 0.3
@@ -228,6 +231,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3adb1e0f300d1b8429222ad413269954, type: 3}
   - {fileID: 8300000, guid: 00c2567c29ff2d346ad4387d9a63bb58, type: 3}
   - {fileID: 8300000, guid: 444498da3f232f048ab57aa81d82b66e, type: 3}
+  volume: 1
+  doFadeOut: 0
+  fadeOutAmountPerTick: 0
   randomizeOrder: 1
   pitchVariationThreshold: 0.2
   soundCooldown: 0

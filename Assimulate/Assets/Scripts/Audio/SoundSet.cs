@@ -8,6 +8,12 @@ public class SoundSet : MonoBehaviour
     [Header("General")]
     [SerializeField] public new string name;
     [SerializeField] public AudioClip[] sounds;
+    [SerializeField][Range(0f, 1f)] public float volume = 1f;
+
+    //if fade out on stop
+    [SerializeField] public bool doFadeOut;
+    //how long it takes to fade out
+    [SerializeField][Range(0f, 1f)] public float fadeOutAmountPerTick;
 
     [Header("Variation and Randomization")]
     //if the sounds should be played randomly from the pool of sounds
@@ -45,7 +51,6 @@ public class SoundSet : MonoBehaviour
 
     #endregion
 
-    
     //the game object that the sound should play from in 3D space
     private AudioSource source;
 
@@ -62,12 +67,24 @@ public class SoundSet : MonoBehaviour
         source.spatialBlend = 1f;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         #region Playing Status
 
-        //if not playing, return early
-        if(!IsPlaying) return;
+        //if not playing, fade out and return early
+        if(!IsPlaying)
+        {
+            //if stopped and fading out
+            if(doFadeOut && _iterationsLeft == 0)
+            {
+                source.volume -= fadeOutAmountPerTick;
+            }
+            return;
+        }
+
+        //Otherwise, put volume back to 100
+        source.volume = volume;
+
         //decrement if finite
         if(IsPlayingFinite) _iterationsLeft--;
 
@@ -122,7 +139,7 @@ public class SoundSet : MonoBehaviour
     /// <summary>
     /// Enables this set to play indefinetly until manually stopped
     /// </summary>
-    public void PlaySet()
+    public void StartSet()
     {
         _iterationsLeft = -1;
     }
