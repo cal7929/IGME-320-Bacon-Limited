@@ -265,8 +265,8 @@ MonoBehaviour:
   doFadeOut: 0
   fadeOutAmountPerTick: 0
   randomizeOrder: 1
-  pitchVariationThreshold: 0.05
-  soundCooldown: 0.2
+  pitchVariationThreshold: 0.1
+  soundCooldown: 0.3
   cooldownVariationThreshold: 0.1
 --- !u!114 &2135889120162090946
 MonoBehaviour:
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundSet
   name: jump
   sounds:
-  - {fileID: 8300000, guid: 48dfc2cba37554e42a46d1b90fa2c198, type: 3}
+  - {fileID: 8300000, guid: 5e8b439dda4c90b4bab2dca55a306f3e, type: 3}
   volume: 1
   doFadeOut: 0
   fadeOutAmountPerTick: 0

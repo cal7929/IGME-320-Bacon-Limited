@@ -13,7 +13,7 @@ public class SoundBody : MonoBehaviour
     /// <summary>
     /// The minimum speed needed for the walking sounds to play
     /// </summary>
-    [SerializeField] 
+    [SerializeField]
     float _MinWalkSpeedForSound = 0.1f;
 
     Rigidbody _body;
@@ -32,6 +32,23 @@ public class SoundBody : MonoBehaviour
     SoundSet _pushingSoundSet;
     SoundSet _dashSoundSet;
     SoundSet _laserSoundSet;
+
+
+    //for laser blocking
+    private bool _isBlockingLaser = false;
+    public bool IsBlockingLaser
+    {
+        get => _isBlockingLaser; 
+        set
+        {
+            //if the value has been changed to true after being false, play laser block sound
+            if(_isBlockingLaser == false && value == true)
+            {
+                OnLaserTouchSound();
+            }
+            _isBlockingLaser = value;
+        }
+    }
 
 
     void Awake()
@@ -152,7 +169,7 @@ public class SoundBody : MonoBehaviour
             _currentPushingBox = other.GetComponentInParent<Rigidbody>();
         }
 
-        //if touching laser
+        //if touching electric tile
         if(other.CompareTag("Laser"))
         {
             OnLaserTouchSound();
@@ -255,7 +272,7 @@ public class SoundBody : MonoBehaviour
     /// <summary>
     /// Plays when touching a laser
     /// </summary>
-    void OnLaserTouchSound()
+    public void OnLaserTouchSound()
     {
         PlaySSIfExists(_laserSoundSet, 1);
     }

@@ -31,11 +31,16 @@ public class Laser : MonoBehaviour
             // Check if the laser hit the immune player
             if (rayHit.collider.gameObject == ImmunePlayer)
             {
+                //Play the laser block sound from the block guy
+                ImmunePlayer.GetComponent<SoundBody>().IsBlockingLaser = true;
                 return;
             }
 
-            // Check if the laser hit a Player
-            if (rayHit.collider.CompareTag("Player"))
+            //if is nothing is blocking laser, set to blocking to false for sounds
+            ImmunePlayer.GetComponent<SoundBody>().IsBlockingLaser = false;
+
+            // Check if the laser hit a Player or box
+            if (rayHit.collider.CompareTag("Player") || rayHit.collider.CompareTag("InteractableObj"))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 return;
@@ -46,6 +51,9 @@ public class Laser : MonoBehaviour
         {
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, transform.position + transform.forward * laserDistance);
+
+            //if is nothing is blocking laser, set to blocking to false for sounds
+            ImmunePlayer.GetComponent<SoundBody>().IsBlockingLaser = false;
         }
     }
 
