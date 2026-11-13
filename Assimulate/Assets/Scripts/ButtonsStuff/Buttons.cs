@@ -42,7 +42,7 @@ public class Buttons : MonoBehaviour
             }
             else if (helpWithButtons.buttonsPressed == 4)
             {
-                laser2.SetActive(false);
+                laser.SetActive(false);
                 laser2.SetActive(false);
                 hiddenPlatform.SetActive(true);
                 //delete laser in front of the player or hide it so it doesn't activate
