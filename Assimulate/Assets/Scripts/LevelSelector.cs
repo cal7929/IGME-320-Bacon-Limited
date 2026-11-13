@@ -16,6 +16,10 @@ public class LevelSelector : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+    public void StartLevel3()
+    {
+        SceneManager.LoadScene(4);
+    }
 
     public void QuitGame()
     {

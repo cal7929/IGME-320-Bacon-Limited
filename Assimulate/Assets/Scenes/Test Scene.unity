@@ -419,6 +419,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blocker
       objectReference: {fileID: 0}
+    - target: {fileID: 3835544808988395680, guid: de5e5b8e5953e2e47917ecdea786e7d3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bac4590180980c34fb2f5100801ed099, type: 2}
     - target: {fileID: 4870837012017916874, guid: de5e5b8e5953e2e47917ecdea786e7d3, type: 3}
       propertyPath: prompt
       value: 
