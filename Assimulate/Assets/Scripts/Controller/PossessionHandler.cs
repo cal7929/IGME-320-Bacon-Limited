@@ -43,13 +43,14 @@ public class PossessionHandler : MonoBehaviour
         //The player always starts as the parasite
         parasiteMovement = parasite.GetComponent<Movement>();
         CurrentMovement = parasiteMovement;
-
-        //Sets parasite's friction to no friction 
-        parasiteMovement.SetFriction(true);
     }
 
     void Start()
     {
+        //Sets parasite's friction to no friction. Moved here from Awake so it
+        //no longer depends on which Awake runs first
+        parasiteMovement.SetFriction(true);
+
         //The camera always starts on the parasite
         FollowParasite();
     }
