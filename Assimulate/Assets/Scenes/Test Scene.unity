@@ -2410,10 +2410,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laser
       objectReference: {fileID: 0}
+    - target: {fileID: 3634584696388680468, guid: e367b2d6248b04242b230830f0cc00a8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d90b5cafc54a08f4f881b256a9c4f709, type: 2}
     - target: {fileID: 5121734261297124708, guid: e367b2d6248b04242b230830f0cc00a8, type: 3}
       propertyPath: ImmunePlayer
       value: 
       objectReference: {fileID: 227130258}
+    - target: {fileID: 6897173061023929832, guid: e367b2d6248b04242b230830f0cc00a8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d90b5cafc54a08f4f881b256a9c4f709, type: 2}
+    - target: {fileID: 7330398560665268205, guid: e367b2d6248b04242b230830f0cc00a8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ebecb3e8498ebad4cb12434afd15d140, type: 2}
     - target: {fileID: 8142233285813291809, guid: e367b2d6248b04242b230830f0cc00a8, type: 3}
       propertyPath: ImmunePlayer
       value: 
@@ -2675,6 +2687,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4231715413746588397, guid: 4262af6fae8daf24cb90f584f82b47b9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f7eaac2450c69c341874c1f7249a496f, type: 2}
     - target: {fileID: 6700801790986406595, guid: 4262af6fae8daf24cb90f584f82b47b9, type: 3}
       propertyPath: specificPlayer
       value: 
